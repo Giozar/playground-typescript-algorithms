@@ -1,0 +1,28 @@
+{
+  "name": "playground-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc –-noEmit",
+    "build:esbuild": "esbuild src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.js --external:express --minify",
+    "build": "pnpm run typecheck && pnpm run build:esbuild",
+    "start": "node --env-file=.env dist/index.js",
+    "dev": "node --env-file=.env --watch --import tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.1",
+    "esbuild": "^0.27.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
